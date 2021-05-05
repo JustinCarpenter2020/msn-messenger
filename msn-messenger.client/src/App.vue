@@ -2,12 +2,17 @@
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="background">
     <router-view />
   </main>
-  <footer>
-    <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
+  <footer class="bg-dark">
+    <div>
+      <button data-toggle="modal" data-target="#windowModal">
+        windows logo
+      </button>
+    </div>
+    <div class="d-flex">
+      <WindowsModal />
     </div>
   </footer>
 </template>
@@ -26,5 +31,9 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
-
+.background{
+  background-image: url('http://i.imgur.com/VvNhMb0.jpg');
+  background-size: cover;
+  background-repeat: none;
+}
 </style>
