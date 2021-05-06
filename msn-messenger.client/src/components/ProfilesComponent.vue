@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import { AppState } from '../AppState'
+import { messagesService } from '../services/MessagesService'
 export default {
   name: 'ProfilesComponent',
   props: { profileProp: { type: Object, required: true } },
   setup(props) {
     return {
       async toggleTo() {
-        AppState.to = props.profileProp.id
+        await messagesService.getMessages(props.profileProp.id)
       }
     }
   },

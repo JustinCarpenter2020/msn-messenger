@@ -3,9 +3,11 @@ import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
 class MessagesService {
-  async getMessages() {
-    const res = await api.get('api/messages/' + AppState.to)
+  async getMessages(id) {
+    const res = await api.get('api/messages/' + id)
     AppState.messages = res.data
+    AppState.to = id
+    logger.log(res.data)
   }
 
   async sendMessage(message) {

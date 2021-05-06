@@ -1,5 +1,5 @@
 <template>
-  <div class="window" id="window">
+  <div class="window" id="window" v-if="state.user.isAuthenticated">
     <div class="bar">
       <div class="bar__top">
         <img class="logo" src="https://images.vectorhq.com/images/previews/4f8/msn-messenger-icon-psd-449180.png">
@@ -38,7 +38,7 @@
     </div>
     <div class="container">
       <div class="item conversation" id="conversation">
-        <p>Pierre says:</p>
+        <!-- <p>Pierre says:</p>
         <p class="message">
           Hello?
         </p>
@@ -48,6 +48,9 @@
         </p>
         <p class="nudge">
           You have just sent a nudge.
+        </p> -->
+        <p v-for="message in state.messages" :key="message.id">
+          {{ message.body }}
         </p>
       </div>
       <div class="item img scroll">
@@ -126,9 +129,11 @@ export default {
   setup() {
     const state = reactive({
       newMessage: {},
-      profiles: computed(() => AppState.profiles),
+      profiles: computed(() => AppState.profiles.filter(p => p.id !== AppState.account.id)),
       loading: computed(() => AppState.loading),
-      to: computed(() => AppState.to)
+      to: computed(() => AppState.to),
+      user: computed(() => AppState.user),
+      messages: computed(() => AppState.messages)
     })
     return {
       state,

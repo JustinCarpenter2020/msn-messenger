@@ -1,5 +1,5 @@
 <template>
-  <div class="modal position"
+  <div class="modal"
        id="windowModal"
        tabindex="-1"
        role="dialog"
@@ -7,7 +7,7 @@
        aria-hidden="true"
        data-backdrop=""
   >
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog position" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">
@@ -92,10 +92,10 @@ export default {
 
 <style lang="scss" scoped>
 .position {
- width: 20rem;
+//  width: 20rem;
   position: fixed;
-  bottom: 0;
-  right: 0;
+  bottom: 50px;
+  left: 0;
   margin: 0;
 }
 
