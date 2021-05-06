@@ -53,27 +53,11 @@
       <div class="item img scroll">
         <div class="img__img">
           <!-- <img src="http://2.bp.blogspot.com/_r1kMibaacEs/TLVQgzYP33I/AAAAAAAAJXk/j8T-F70lTQ8/s320/Windows+Live+Messenger+2011+v15.4.3502.922+FINAL+%28Espa%C3%B1ol%29.jpg"> -->
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
-          <div>Hellooo</div>
+
+          <!--TODO v-for with an @click to set the one i click on's id to the AppState.to -->
+          <div class="overflow" v-if="state.profiles">
+            <ProfilesComponent v-for="profile in state.profiles" :key="profile.id" :profile-prop="profile" />
+          </div>
         </div>
       </div>
       <div class="item send-message">
@@ -135,8 +119,20 @@
 </template>
 
 <script>
+import { computed, reactive } from 'vue'
+import { AppState } from '../AppState'
 export default {
-  name: 'AboutPage'
+  name: 'HomePage',
+  setup() {
+    const state = reactive({
+      newMessage: {},
+      profiles: computed(() => AppState.profiles),
+      loading: computed(() => AppState.loading)
+    })
+    return {
+      state
+    }
+  }
 }
 </script>
 
@@ -146,6 +142,10 @@ export default {
 }
 button {
   cursor: pointer;
+}
+
+.overflow{
+  overflow: hidden;
 }
 
 .scroll{

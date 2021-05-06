@@ -5,8 +5,8 @@
   <main class="background">
     <router-view />
   </main>
-  <footer class="bg-dark">
-    <div class="mb-1">
+  <footer class="blue">
+    <div class="">
       <button class="logo" data-toggle="modal" data-target="#windowModal">
         <!-- windows logo -->
       </button>
@@ -38,11 +38,15 @@ export default {
   overflow: hidden;
 }
 .logo{
-  background-image: url('https://iconape.com/wp-content/files/ve/352537/png/Windows_Start_Button-logo.png');
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqrn_GAGqFSlRTHATQ3jCFGtPEFbGzilPLE34MIYQ0iZGbsPfK3TLZCK68ywo6S-gPHRM&usqp=CAU');
   background-size: cover;
   background-position: center;
   width: 10rem;
   height: 3rem;
   padding-top: 10px;
+}
+
+.blue{
+  background-color: #00a2ed;
 }
 </style>
