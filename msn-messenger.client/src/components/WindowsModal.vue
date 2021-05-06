@@ -17,7 +17,21 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body p-0">
+          <div class="row p-0">
+            <div class="col-10">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    Title
+                  </h4>
+                  <p class="card-text">
+                    Text
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
           <button
             class="btn btn-outline-primary text-uppercase"
             @click="login"
@@ -52,14 +66,6 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Close
-          </button>
-          <button type="button" class="btn btn-primary">
-            Save changes
-          </button>
-        </div>
       </div>
     </div>
   </div>
@@ -92,11 +98,15 @@ export default {
 
 <style lang="scss" scoped>
 .position {
-//  width: 20rem;
   position: fixed;
   bottom: 50px;
   left: 0;
   margin: 0;
+}
+
+.modal-content{
+  width: 30vw;
+ height: 60vh;
 }
 
 .dropdown-menu {

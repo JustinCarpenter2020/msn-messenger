@@ -1,120 +1,123 @@
 <template>
-  <div class="window" id="window" v-if="state.user.isAuthenticated">
-    <div class="bar">
-      <div class="bar__top">
-        <img class="logo" src="https://images.vectorhq.com/images/previews/4f8/msn-messenger-icon-psd-449180.png">
-        <div class="contact">
-          <div class="username">
-            Somebody that I used to know
-          </div>
-          <div class="mood">
-            missing the good ol' days &#60;feeling.nostalgic@hotmail.com&#62;
-          </div>
-        </div>
+  <div class="container-fluid">
+    <!-- <div class="row">
+      <div class="col-1">
+        <img class="img-fluid" src="https://www.pngjoy.com/pngm/799/9474437_msn-logo-www-publiverlag-com-report-msn-logo.png" alt="">
       </div>
-      <div class="bar__bottom">
-        <button class="action__button" title="Add a friend to the conversation">
-          ➕
-        </button>
-        <button class="action__button" title="Share a file">
-          🗂
-        </button>
-        <button class="action__button" title="Start a video call">
-          🎥
-        </button>
-        <button class="action__button" title="Start a phone call">
-          📞
-        </button>
-        <button class="action__button" title="Share some music">
-          🎵
-        </button>
-        <button class="action__button" title="Start a game">
-          🎲
-        </button>
-        <button class="action__button" title="Block user">
-          🚷
-        </button>
-      </div>
-    </div>
-    <div class="container">
-      <div class="item conversation" id="conversation">
-        <!-- <p>Pierre says:</p>
-        <p class="message">
-          Hello?
-        </p>
-        <p>Pierre says:</p>
-        <p class="message">
-          Anyone still here?
-        </p>
-        <p class="nudge">
-          You have just sent a nudge.
-        </p> -->
-        <p v-for="message in state.messages" :key="message.id">
-          {{ message.body }}
-        </p>
-      </div>
-      <div class="item img scroll">
-        <div class="img__img">
-          <div class="overflow" v-if="state.profiles">
-            <ProfilesComponent v-for="profile in state.profiles" :key="profile.id" :profile-prop="profile" />
-          </div>
-        </div>
-      </div>
-      <div class="item send-message">
-        <div class="send-message__buttons">
-          <button class="send-message__button" title="Send an emoticon">
-            😊
-          </button>
-          <button class="send-message__button" title="Send a wink">
-            😉
-          </button>
-          <button class="send-message__button" id="nudge-button" title="Send a nudge">
-            🥴
-          </button>
-          <button class="send-message__button" title="Send a voice message">
-            📢
-          </button>
-          <button class="send-message__button" title="Change the font">
-            🔤
-          </button>
-          <button class="send-message__button" title="Change text color">
-            🎨
-          </button>
-          <button class="send-message__button" title="Send an image">
-            🏞
-          </button>
-          <button class="send-message__button" title="Send a gift">
-            🎁
+    </div> -->
+    <div class="window" id="window" v-if="state.user.isAuthenticated">
+      <div class="bar">
+        <div class=" d-flex justify-content-end mr-1 mt-1">
+          <button class="custom-btn" @click="minimize">
+            _
+          </button> <button class="custom-btn">
+            <i class="far fa-square"> </i>
+          </button> <button class="custom-btn px-3">
+            X
           </button>
         </div>
-        <form @submit.prevent="sendMessage" class="send-message__textfield">
-          <textarea v-model="state.newMessage.body"></textarea>
-          <div class="buttons">
-            <button type="submit">
-              <u>S</u>end
+        <div class="bar__top">
+          <img class="logo" src="https://images.vectorhq.com/images/previews/4f8/msn-messenger-icon-psd-449180.png">
+          <div class="contact">
+            <div class="username">
+              Somebody that I used to know
+            </div>
+            <div class="mood">
+              missing the good ol' days &#60;feeling.nostalgic@hotmail.com&#62;
+            </div>
+          </div>
+        </div>
+        <div class="bar__bottom">
+          <button class="action__button" title="Add a friend to the conversation">
+            ➕
+          </button>
+          <button class="action__button" title="Share a file">
+            🗂
+          </button>
+          <button class="action__button" title="Start a video call">
+            🎥
+          </button>
+          <button class="action__button" title="Start a phone call">
+            📞
+          </button>
+          <button class="action__button" title="Share some music">
+            🎵
+          </button>
+          <button class="action__button" title="Start a game">
+            🎲
+          </button>
+          <button class="action__button" title="Block user">
+            🚷
+          </button>
+        </div>
+      </div>
+      <div class="container">
+        <div class="item conversation" id="conversation">
+          <MessageComponent v-for="message in state.messages" :key="message.id" :message-prop="message" />
+        </div>
+        <div class="item img scroll">
+          <div class="img__img">
+            <div class="overflow" v-if="state.profiles">
+              <ProfilesComponent v-for="profile in state.profiles" :key="profile.id" :profile-prop="profile" />
+            </div>
+          </div>
+        </div>
+        <div class="item send-message">
+          <div class="send-message__buttons">
+            <button @click="state.newMessage.body +='😊'" class="send-message__button" title="Send an emoticon">
+              😊
             </button>
-            <button>Sea<u>r</u>ch</button>
+            <button @click="state.newMessage.body +='😉'" class="send-message__button" title="Send a wink">
+              😉
+            </button>
+            <button @click="state.newMessage.body +='🥴'" class="send-message__button" id="nudge-button" title="Send a nudge">
+              🥴
+            </button>
+            <button @click="state.newMessage.body +='📢'" class="send-message__button" title="Send a voice message">
+              📢
+            </button>
+            <button @click="state.newMessage.body +='🔤'" class="send-message__button" title="Change the font">
+              🔤
+            </button>
+            <button @click="state.newMessage.body +=' 🎨'" class="send-message__button" title="Change text color">
+              🎨
+            </button>
+            <button @click="state.newMessage.body +=' 🏞'" class="send-message__button" title="Send an image">
+              🏞
+            </button>
+            <button @click="state.newMessage.body +='🎁'" class="send-message__button" title="Send a gift">
+              🎁
+            </button>
           </div>
-        </form>
-        <div class="send-message__infos">
-          Last message received at 2:00 PM on 12/16/2006.
+          <form @submit.prevent="sendMessage" class="send-message__textfield">
+            <textarea v-model="state.newMessage.body"></textarea>
+            <div class="buttons">
+              <button type="submit">
+                <u>S</u>end
+              </button>
+              <button>Sea<u>r</u>ch</button>
+            </div>
+          </form>
+          <div class="send-message__infos">
+            Last message received at 2:00 PM on 12/16/2006.
+          </div>
         </div>
-      </div>
-      <div class="item img">
-        <div class="img__img">
-          <img src="http://2.bp.blogspot.com/_r1kMibaacEs/TLVQgzYP33I/AAAAAAAAJXk/j8T-F70lTQ8/s320/Windows+Live+Messenger+2011+v15.4.3502.922+FINAL+%28Espa%C3%B1ol%29.jpg">
+        <div class="item img">
+          <div class="img__img">
+            <img src="http://2.bp.blogspot.com/_r1kMibaacEs/TLVQgzYP33I/AAAAAAAAJXk/j8T-F70lTQ8/s320/Windows+Live+Messenger+2011+v15.4.3502.922+FINAL+%28Espa%C3%B1ol%29.jpg">
+          </div>
         </div>
-      </div>
-      <div class="footer">
-        <a href="#">Play the new MSN Messenger games</a>
+        <div class="footer">
+          <a href="#">Play the new MSN Messenger games</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="nudge-text" id="nudge-text">
-    <p class="nudge">
-      You have just sent a nudge.
-    </p>
+    <div class="nudge-text" id="nudge-text">
+      <p class="nudge">
+        You have just sent a nudge.
+      </p>
+    </div>
   </div>
 </template>
 
@@ -128,7 +131,7 @@ export default {
   name: 'HomePage',
   setup() {
     const state = reactive({
-      newMessage: {},
+      newMessage: { body: '' },
       profiles: computed(() => AppState.profiles.filter(p => p.id !== AppState.account.id)),
       loading: computed(() => AppState.loading),
       to: computed(() => AppState.to),
@@ -144,10 +147,13 @@ export default {
         try {
           state.newMessage.to = state.to
           await messagesService.sendMessage(state.newMessage)
-          state.newMessage = {}
+          state.newMessage = { body: '' }
         } catch (error) {
           logger.error(error)
         }
+      },
+      minimize() {
+        document.getElementById('window').style.display = 'none'
       }
     }
   }
@@ -160,6 +166,12 @@ export default {
 }
 button {
   cursor: pointer;
+}
+
+.custom-btn{
+  border-radius: 10%;
+  background: transparent;
+
 }
 
 .overflow{
