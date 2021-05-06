@@ -84,15 +84,15 @@
             🎁
           </button>
         </div>
-        <div class="send-message__textfield">
-          <textarea></textarea>
+        <form @submit.prevent="sendMessage" class="send-message__textfield">
+          <textarea v-model="state.newMessage.body"></textarea>
           <div class="buttons">
             <button type="submit">
               <u>S</u>end
             </button>
             <button>Sea<u>r</u>ch</button>
           </div>
-        </div>
+        </form>
         <div class="send-message__infos">
           Last message received at 2:00 PM on 12/16/2006.
         </div>
@@ -118,16 +118,29 @@
 <script>
 import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
+import { messagesService } from '../services/MessagesService'
+import { logger } from '../utils/Logger'
+
 export default {
   name: 'HomePage',
   setup() {
     const state = reactive({
       newMessage: {},
       profiles: computed(() => AppState.profiles),
-      loading: computed(() => AppState.loading)
+      loading: computed(() => AppState.loading),
+      to: computed(() => AppState.to)
     })
     return {
-      state
+      state,
+      async sendMessage() {
+        try {
+          state.newMessage.to = state.to
+          await messagesService.sendMessage(state.newMessage)
+          state.newMessage = {}
+        } catch (error) {
+          logger.error(error)
+        }
+      }
     }
   }
 }

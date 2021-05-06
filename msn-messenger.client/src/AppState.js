@@ -5,6 +5,7 @@ export const AppState = reactive({
   user: {},
   account: {},
   profiles: [],
+  messages: [],
   to: '',
   loading: true
 })
