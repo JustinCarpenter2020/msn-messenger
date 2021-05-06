@@ -52,9 +52,6 @@
       </div>
       <div class="item img scroll">
         <div class="img__img">
-          <!-- <img src="http://2.bp.blogspot.com/_r1kMibaacEs/TLVQgzYP33I/AAAAAAAAJXk/j8T-F70lTQ8/s320/Windows+Live+Messenger+2011+v15.4.3502.922+FINAL+%28Espa%C3%B1ol%29.jpg"> -->
-
-          <!--TODO v-for with an @click to set the one i click on's id to the AppState.to -->
           <div class="overflow" v-if="state.profiles">
             <ProfilesComponent v-for="profile in state.profiles" :key="profile.id" :profile-prop="profile" />
           </div>

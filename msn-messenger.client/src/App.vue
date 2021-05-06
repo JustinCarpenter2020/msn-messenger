@@ -1,6 +1,5 @@
 <template>
   <header>
-    <!-- <Navbar /> -->
   </header>
   <main class="background">
     <router-view />
@@ -8,7 +7,6 @@
   <footer class="blue">
     <div class="">
       <button class="logo" data-toggle="modal" data-target="#windowModal">
-        <!-- windows logo -->
       </button>
     </div>
     <div class="d-flex">
