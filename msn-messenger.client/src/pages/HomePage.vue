@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import { computed, reactive } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { messagesService } from '../services/MessagesService'
 import { logger } from '../utils/Logger'
@@ -134,6 +134,9 @@ export default {
       to: computed(() => AppState.to),
       user: computed(() => AppState.user),
       messages: computed(() => AppState.messages)
+    })
+    onMounted(() => {
+      // socketSer TODO
     })
     return {
       state,

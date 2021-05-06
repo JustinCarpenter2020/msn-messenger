@@ -5,6 +5,7 @@ import router from '../router'
 import { accountService } from './AccountService'
 import { setBearer } from './AxiosService'
 import { profilesService } from '../services/ProfilesService'
+import { socketService } from './SocketService'
 export const AuthService = initialize({
   domain,
   clientId,
@@ -23,5 +24,6 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   AppState.user = AuthService.user
   await accountService.getAccount()
   await profilesService.getAll()
+  socketService.authenticate(AuthService.bearer)
   // NOTE if there is something you want to do once the user is authenticated, place that here
 })
