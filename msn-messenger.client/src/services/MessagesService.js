@@ -13,7 +13,8 @@ class MessagesService {
   async sendMessage(message) {
     const res = await api.post('api/messages', message)
     logger.log(res.data)
-  //  this.getMessages()
+    // AppState.messages.push(res.data)
+    // this.getMessages(message.to)
   }
 }
 

@@ -6,6 +6,7 @@ class MessageService {
   }
 
   async createMessage(message) {
+    // TODO populate creator
     return await dbContext.Message.create(message)
   }
 }

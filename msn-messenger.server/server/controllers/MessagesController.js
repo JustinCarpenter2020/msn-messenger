@@ -30,9 +30,10 @@ export class MessagesController extends BaseController {
     try {
       req.body.from = req.userInfo.id
       const message = await messageService.createMessage(req.body)
+      message.creator = req.userInfo
       socketService.messageUser(req.body.to, 'new:message', message)
       socketService.messageUser(req.body.from, 'new:message', message)
-      res.send(message)
+      return res.send(message)
     } catch (error) {
       next(error)
     }

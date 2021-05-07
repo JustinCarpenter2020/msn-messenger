@@ -126,6 +126,7 @@ import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { messagesService } from '../services/MessagesService'
 import { logger } from '../utils/Logger'
+import { socketService } from '../services/SocketService'
 
 export default {
   name: 'HomePage',
@@ -139,7 +140,7 @@ export default {
       messages: computed(() => AppState.messages)
     })
     onMounted(() => {
-      // socketSer TODO
+      socketService.emit('join:room', 'general')
     })
     return {
       state,

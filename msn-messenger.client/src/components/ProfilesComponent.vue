@@ -6,12 +6,15 @@
 
 <script>
 import { messagesService } from '../services/MessagesService'
+// import { socketService } from '../services/SocketService'
+
 export default {
   name: 'ProfilesComponent',
   props: { profileProp: { type: Object, required: true } },
   setup(props) {
     return {
       async toggleTo() {
+        // socketService.emit('JOIN_ROOM', { roomId: props.profileProp.id })
         await messagesService.getMessages(props.profileProp.id)
       }
     }
