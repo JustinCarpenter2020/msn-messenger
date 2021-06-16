@@ -9,59 +9,84 @@
   >
     <div class="modal-dialog position" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">
-            Modal title
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="">
+          <button type="button" class="close mr-2 text-light" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body p-0">
-          <div class="row p-0">
-            <div class="col-10">
-              <div class="card">
+          <div class="row p-0 h-100">
+            <div class="col-8">
+              <div class="card h-100">
                 <div class="card-body">
-                  <h4 class="card-title">
-                    Title
-                  </h4>
-                  <p class="card-text">
-                    Text
-                  </p>
+                  <div class="row">
+                    <div class="col-12 mt-2">
+                      <p> <i class="fas fa-cut"></i> Snipping Tool</p>
+                    </div>
+                    <div class="col-12 mt-2">
+                      <p><i class="fas fa-calculator"></i> Calculator</p>
+                    </div>
+                    <div class="col-12 mt-2">
+                      <p><i class="fab fa-windows"></i> Media Center</p>
+                    </div>
+                    <div class="col-12 mt-2">
+                      <p><i class="fas fa-sticky-note"></i> Sticky Notes</p>
+                    </div>
+                    <div class="col-12 mt-2">
+                      <p><i class="fas fa-palette"></i> Paint</p>
+                    </div>
+                    <div class="col-12 mt-2">
+                      <p><i class="fas fa-search"></i> Magnify</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row mt-3">
+                    <div class="col-12">
+                      <details>
+                        <summary>All Programs</summary>
+                      </details>
+                    </div>
+                  </div>
+                  <div class="row mt-4">
+                    <div class="col-12">
+                      <input type="text" class="w-90" placeholder="Search Programs And Files">
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <button
-            class="btn btn-outline-primary text-uppercase"
-            @click="login"
-            v-if="!user.isAuthenticated"
-          >
-            Login
-          </button>
-          <div class="dropdown" v-else>
-            <div
-              class="dropdown-toggle"
-              @click="state.dropOpen = !state.dropOpen"
-            >
-              <img
-                :src="user.picture"
-                alt="user photo"
-                height="40"
-                class="rounded"
-              />
-              <span class="mx-3">{{ user.name }}</span>
-            </div>
-            <div
-              class="dropdown-menu p-0 list-group w-100"
-              :class="{ show: state.dropOpen }"
-              @click="state.dropOpen = false"
-            >
-              <div
-                class="list-group-item list-group-item-action hoverable"
-                @click="logout"
-              >
-                logout
+            <div class="col-4 opacity">
+              <div class="row text-light">
+                <div class="col-12 mt-3 pl-0">
+                  <p>Music</p>
+                </div>
+                <div class="col-12 mt-3 pl-0">
+                  <p>Pictures</p>
+                </div>
+                <div class="col-12 mt-3 pl-0">
+                  <p>Games</p>
+                </div>
+                <div class="col-12 mt-3 pl-0">
+                  <p>Documents</p>
+                </div>
+                <div class="col-12 mt-3 pl-0">
+                  <p>Help and Support</p>
+                </div>
+                <div class="col-12 mt-3 pl-0">
+                  <p>Windows Security</p>
+                </div>
+                <div class="col-12 mt-5">
+                  <button
+                    class="btn btn-outline-primary text-uppercase"
+                    @click="login"
+                    v-if="!user.isAuthenticated"
+                  >
+                    Login
+                  </button>
+                  <button class="btn btn-outline-primary text-uppercase" @click="logout" v-else>
+                    Logout
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -104,7 +129,16 @@ export default {
   margin: 0;
 }
 
+.col-12:hover{
+border: .5px solid black;
+}
+
+.opacity{
+  opacity: .80;
+  }
+
 .modal-content{
+  background-color: #565656;
   width: 30vw;
  height: 60vh;
 }
@@ -117,5 +151,8 @@ export default {
 }
 .dropdown-menu.show {
   transform: scale(1);
+}
+.blue{
+  background-color: #00a2ed;
 }
 </style>

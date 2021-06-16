@@ -8,7 +8,7 @@
     </div>
 
     <div v-else class="text-right">
-      <!-- <p>{{ state.name[0] }} says:</p> -->
+      <p>{{ state.name[0] }} says:</p>
       <p>{{ messageProp.body }}</p>
     </div>
   </div>
@@ -22,7 +22,7 @@ export default {
   props: { messageProp: { type: Object, required: true } },
   setup(props) {
     const state = reactive({
-      // name: props.messageProp.creator.name.split('@'),
+      name: props.messageProp.creator.name.split('@'),
       account: computed(() => AppState.account)
     })
     return {

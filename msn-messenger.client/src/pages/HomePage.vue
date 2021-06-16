@@ -1,18 +1,13 @@
 <template>
   <div class="container-fluid">
-    <!-- <div class="row">
-      <div class="col-1">
-        <img class="img-fluid" src="https://www.pngjoy.com/pngm/799/9474437_msn-logo-www-publiverlag-com-report-msn-logo.png" alt="">
-      </div>
-    </div> -->
     <div class="window" id="window" v-if="state.user.isAuthenticated">
       <div class="bar">
         <div class=" d-flex justify-content-end mr-1 mt-1">
-          <button class="custom-btn" @click="minimize">
+          <button class="custom-btn">
             _
           </button> <button class="custom-btn">
             <i class="far fa-square"> </i>
-          </button> <button class="custom-btn px-3">
+          </button> <button @click="minimize" class="custom-btn px-3">
             X
           </button>
         </div>
